@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3embwe4va3ru"]
+
+[ext_resource type="Texture2D" uid="uid://dv583gcytcgv7" path="res://icon.svg" id="1_m6ed4"]
+[ext_resource type="Script" path="res://Scripts/ranged_enemy.gd" id="1_no11c"]
+[ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="3_xrdur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohsu2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fw2vp"]
+
+[node name="Ranged_enemy" type="CharacterBody2D"]
+collision_layer = 6
+collision_mask = 5
+script = ExtResource("1_no11c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("1_m6ed4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ohsu2")
+
+[node name="run_detect" type="RayCast2D" parent="."]
+target_position = Vector2(-96, 0)
+collision_mask = 3
+
+[node name="run_detect2" type="RayCast2D" parent="."]
+target_position = Vector2(96, 0)
+collision_mask = 3
+
+[node name="HurtBox" type="Area2D" parent="." groups=["rangedEnemy"]]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("3_xrdur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_fw2vp")

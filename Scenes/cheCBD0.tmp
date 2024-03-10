@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5ceks1liiwen"]
+
+[ext_resource type="PackedScene" uid="uid://bkbpenou3hvrs" path="res://Scenes/player.tscn" id="1_np2h0"]
+[ext_resource type="Texture2D" uid="uid://dv583gcytcgv7" path="res://icon.svg" id="2_q787g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27fff"]
+size = Vector2(2034, 18)
+
+[node name="Check" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(204, 211)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_27fff")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1286, 99)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(943, 115)
+shape = SubResource("RectangleShape2D_27fff")
+
+[node name="Player" parent="." instance=ExtResource("1_np2h0")]
+position = Vector2(176, 145)
+jump_height = 100.0
+jump_time_to_peak = 0.5
+jump_time_to_decent = 0.4
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(399, 79)
+texture = ExtResource("2_q787g")
